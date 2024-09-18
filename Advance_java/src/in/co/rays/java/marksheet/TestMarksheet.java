@@ -8,10 +8,10 @@ public class TestMarksheet {
 	public static void main(String[] args) throws Exception {
 
 		// testAdd();
-//		  testupdate();
+		testupdate();
 //		  testdelete();
 //		  testFindByPk();
-		testSearch();
+		// testSearch();
 
 	}
 
@@ -25,24 +25,27 @@ public class TestMarksheet {
 		bean.setChemistry(48);
 		bean.setMaths(61);
 
-		MarksheetModel model = new MarksheetModel();
-		model.add(bean);
+		try {
+			MarksheetModel model = new MarksheetModel();
+
+			model.add(bean);
+
+		} catch (Exception e) {
+			System.out.println("exception: " + e.getMessage());
+		}
 
 	}
 
 	public static void testupdate() throws Exception {
 
-		MarksheetBean bean = new MarksheetBean();
-
-		bean.setId(20);
-		bean.setRollno(200);
-		bean.setName("rahul");
-		bean.setPhysics(74);
-		bean.setChemistry(45);
-		bean.setMaths(66);
-
 		MarksheetModel model = new MarksheetModel();
+
+		MarksheetBean bean = model.findByPk(15);
+
+		bean.setName("kkk");
+
 		model.update(bean);
+
 	}
 
 	public static void testdelete() throws Exception {

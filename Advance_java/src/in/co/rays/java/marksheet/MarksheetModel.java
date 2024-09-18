@@ -32,6 +32,12 @@ public class MarksheetModel {
 	}
 
 	public void add(MarksheetBean bean) throws Exception {
+		
+		MarksheetBean existBean = findByrollNo(bean.getRollno());
+
+		if (existBean != null) {
+			throw new RuntimeException("Rollno already exist..!!");
+		}
 
 		int pk = nextPk();
 
@@ -55,6 +61,12 @@ public class MarksheetModel {
 	}
 
 	public void update(MarksheetBean bean) throws Exception {
+		
+		MarksheetBean existBean = findByrollNo(bean.getRollno());
+
+		if (existBean != null && bean.getId() != existBean.getId()) {
+			throw new RuntimeException(" Rollno already exist..!!");
+		}
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -183,12 +195,12 @@ public class MarksheetModel {
 
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance_java", "root", "root");
 
-		StringBuffer sql = new StringBuffer("select * from marksheet where 1=1 ");
+		StringBuffer sql = new StringBuffer("select * from marksheet");
 
 		if (bean != null) {
 
 			if (bean.getName() != null && bean.getName().length() > 0) {
-				sql.append(" and name like '" + bean.getName() + " % '");
+				sql.append(" where name like '" + bean.getName() + "%'");
 			}
 			if (bean.getRollno() > 0) {
 				sql.append(" and rollno = " + bean.getRollno());
