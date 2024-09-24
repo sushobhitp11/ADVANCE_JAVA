@@ -7,12 +7,17 @@ import java.sql.Statement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+//Four steps to make a class singleton.
+
+//1.Make class final so that child class cannot be created for single class.
 public final class JDBCDataSource {
 
 	private static JDBCDataSource jds = null;
 
 	private ComboPooledDataSource cpds = null;
-
+	
+//2. Make default constructor private so that no one other class can instantiate single class.
+	
 	private JDBCDataSource() {
 
 		try {
@@ -31,7 +36,11 @@ public final class JDBCDataSource {
 		}
 
 	}
-
+	
+//3.Declare a static variable of self type in single class . Static variables have only one copy in their lifetime .
+	
+//4.Make a getInsatance() static method in singleton class that will return instance of same single class .
+	
 	public static JDBCDataSource getInstance() {
 
 		if (jds == null) {
