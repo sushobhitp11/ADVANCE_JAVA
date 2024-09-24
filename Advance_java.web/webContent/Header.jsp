@@ -9,7 +9,7 @@
 </head>
 <body>
 	<%
-		UserBean user = (UserBean) request.getAttribute("User");
+		UserBean user = (UserBean) request.getAttribute("user");
 	%>
 	<%
 		if (user != null) {
@@ -17,7 +17,6 @@
 	<h3>
 		Hi,
 		<%=user.getFirstName()%></h3>
-
 	<%
 		} else {
 	%>
@@ -26,6 +25,5 @@
 		}
 	%>
 	<hr>
-
 </body>
 </html>
