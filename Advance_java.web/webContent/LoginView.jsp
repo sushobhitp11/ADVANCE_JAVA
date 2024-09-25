@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-      <%@ include file="Header.jsp" %>
+	<%@ include file="Header.jsp"%>
 	<form action="LoginCtl" method="post">
 		<div align="center">
 			<%
@@ -23,22 +23,23 @@
 			<%
 				}
 			%>
-		<table>
-			<tr>
-			<tr>
-				<th>Login Id:</th>
-				<td><input type="text" name="loginId"></td>
-			</tr>
-			<tr>
-				<th>Password:</th>
-				<td><input type="text" name="password"></td>
-			</tr>
+			<table>
+				<tr>
+				<tr>
+					<th>Login Id:</th>
+					<td><input type="text" name="loginId"></td>
+				</tr>
+				<tr>
+					<th>Password:</th>
+					<td><input type="text" name="password"></td>
+				</tr>
 
-			<tr>
-				<th></th>
-				<td><input type="submit" value="signIn"></td>
-			</tr>
-		</table>
+				<tr>
+					<th></th>
+					<td><input type="submit" name="operation" value="signIn">
+						<input type="submit" name="operation" value="signUp"></td>
+				</tr>
+			</table>
 		</div>
 	</form>
 </body>
