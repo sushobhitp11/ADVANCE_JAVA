@@ -45,7 +45,7 @@ public class UserCtl extends HttpServlet {
 
 		try {
 			model.add(bean);
-			req.setAttribute("msg", "User Registered Sucessfully...!!!");
+			req.setAttribute("msg", "User Added Sucessfully...!!!");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
