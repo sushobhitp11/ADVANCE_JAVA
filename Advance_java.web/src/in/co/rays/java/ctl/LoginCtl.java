@@ -32,6 +32,7 @@ public class LoginCtl extends HttpServlet {
 		String loginId = req.getParameter("loginId");
 		String password = req.getParameter("password");
 		String op = req.getParameter("operation");
+		String uri = req.getParameter("uri");
 
 		if (op.equals("signIn")) {
 			UserModel model = new UserModel();
@@ -42,9 +43,13 @@ public class LoginCtl extends HttpServlet {
 				UserBean bean = model.Authenticate(loginId, password);
 				if (bean != null) {
 					session.setAttribute("user", bean);
-
-					RequestDispatcher rd = req.getRequestDispatcher("Welcome.jsp");
-					rd.forward(req, resp);
+                      if(uri.equalsIgnoreCase("null")) {
+                    	  resp.sendRedirect("WelcomeCtl");
+                    	  
+                      }else {
+                    	  resp.sendRedirect(uri);
+                      }
+                      return;
 
 				} else {
 					req.setAttribute("msg", "loginId & password is invalid");

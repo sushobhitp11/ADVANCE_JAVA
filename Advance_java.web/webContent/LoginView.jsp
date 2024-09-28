@@ -12,6 +12,7 @@
 		<div align="center">
 			<%
 				String msg = (String) request.getAttribute("msg");
+			    String uri = (String) request.getAttribute("uri");
 			%>
 			<h1>User Registration</h1>
 			<%
@@ -41,6 +42,7 @@
 				</tr>
 			</table>
 		</div>
+		<input type="hidden" name="uri" value="<%=uri%>">
 	</form>
 </body>
 </html>

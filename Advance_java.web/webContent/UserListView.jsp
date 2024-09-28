@@ -12,9 +12,10 @@
      <%
 		List list = (List) request.getAttribute("list");
 		int pageNo = (int) request.getAttribute("pageNo");
+		int index =((pageNo - 1)*5)+ 1;
 	%>
 	<%@ include file="Header.jsp"%>
-	<form action="UserListCtl" method="post">
+	<form action="UserListCtl.do" method="post">
 		<div align="center">
 			<h1>User List</h1>
 		</div>
@@ -28,7 +29,8 @@
 		<br>
 		<table border="1%" style="width: 100%">
 			<tr>
-				<th>Id</th>
+				<th>Select</th>
+				<th>S. No.</th>
 				<th>FirstName</th>
 				<th>LastName</th>
 				<th>Gender</th>
@@ -44,7 +46,8 @@
 					UserBean bean = (UserBean) it.next();
 			%>
 			<tr>
-				<td align="center"><%=bean.getId()%></td>
+				<td align="center"><input type="checkbox" name="ids" value="<%=bean.getId()%>"></td>
+				<td align="center"><%=index++%></td>
 				<td align="center"><%=bean.getFirstName()%></td>
 				<td align="center"><%=bean.getLastName()%></td>
 				<td align="center"><%=bean.getGender()%></td>
@@ -53,6 +56,7 @@
 				<td align="center"><%=bean.getDob()%></td>
 				<td align="center"><%=bean.getPhoneNo()%></td>
 				<td align="center"><%=bean.getAddress()%></td>
+				<td align="center"><a href="UserCtl.do?id=<%=bean.getId()%>">edit</a></td>
 			</tr>
 			<%
 				}
