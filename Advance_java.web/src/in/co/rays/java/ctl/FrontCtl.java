@@ -3,6 +3,7 @@ package in.co.rays.java.ctl;
 import java.io.IOException;
 
 
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
@@ -31,7 +32,7 @@ public class FrontCtl implements Filter {
 		
 		HttpSession session = req.getSession();
 		
-		if(session.getAttribute("user") == null) {
+		if(session == null || session.getAttribute("user") == null) {
 			req.setAttribute("msg", "session expired...plz login again..!!");
 			req.setAttribute("uri",uri);
 			RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
