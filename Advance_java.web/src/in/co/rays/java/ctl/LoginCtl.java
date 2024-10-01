@@ -38,20 +38,20 @@ public class LoginCtl extends HttpServlet {
 			UserModel model = new UserModel();
 
 			HttpSession session = req.getSession();
-			
-			//session.setMaxInactiveInterval(60);
+
+			// session.setMaxInactiveInterval(60);
 
 			try {
 				UserBean bean = model.Authenticate(loginId, password);
 				if (bean != null) {
 					session.setAttribute("user", bean);
-                      if(uri.equalsIgnoreCase("null")) {
-                    	  resp.sendRedirect("WelcomeCtl");
-                    	  
-                      }else {
-                    	  resp.sendRedirect(uri);
-                      }
-                      return;
+					if (uri.equalsIgnoreCase("null")) {
+						resp.sendRedirect("WelcomeCtl");
+
+					} else {
+						resp.sendRedirect(uri);
+					}
+					return;
 
 				} else {
 					req.setAttribute("msg", "loginId & password is invalid");

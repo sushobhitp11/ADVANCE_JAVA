@@ -1,4 +1,5 @@
 package in.co.rays.java.ctl;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -55,10 +56,10 @@ public class UserCtl extends HttpServlet {
 		}
 		bean.setPhoneNo(req.getParameter("phoneNo"));
 		bean.setAddress(req.getParameter("address"));
-    
+
 		UserModel model = new UserModel();
 
-		if(op.equals("save")) {
+		if (op.equals("save")) {
 			try {
 				model.add(bean);
 				req.setAttribute("msg", "User Added Successfully...!!!");
@@ -67,7 +68,7 @@ public class UserCtl extends HttpServlet {
 			}
 		}
 
-		if(op.equals("update")) {
+		if (op.equals("update")) {
 			try {
 				bean.setId(Integer.parseInt(req.getParameter("id")));
 				model.update(bean);
